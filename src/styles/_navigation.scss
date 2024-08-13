@@ -1,0 +1,187 @@
+.navigation {
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  color: white;
+  background-color: black;
+  position: fixed;
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+
+  .navigation-main {
+    display: flex;
+    justify-content: center;
+
+    .link-home-shop {
+      display: flex;
+      transition: all 0.1s;
+      align-items: center;
+      &:hover {
+        transform: translateX(0.5rem);
+      }
+
+      .Icon {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        margin-right: 0.5rem;
+      }
+    }
+
+    .link-cart {
+      display: flex;
+      position: relative;
+
+      .cart-icon {
+        display: flex;
+        transition: all 0.1s;
+        align-items: center;
+
+        &:hover {
+          transform: translateX(0.5rem);
+        }
+
+        .Icon {
+          margin-top: 1.5rem;
+          margin-bottom: 1.5rem;
+          margin-right: 0.5rem;
+        }
+      }
+
+      .cart-count {
+        position: absolute;
+
+        > span {
+          > span {
+            padding: 3px 3px;
+            font-size: 0.87rem;
+            color: white;
+            background-color: #da16c6;
+            border-radius: 50px;
+          }
+        }
+      }
+    }
+
+    .link-favorites {
+      display: flex;
+      position: relative;
+
+      .favorites-icon {
+        display: flex;
+        transition: all 0.1s;
+        align-items: center;
+        &:hover {
+          transform: translateX(0.5rem);
+        }
+        .Icon {
+          margin-top: 1.5rem;
+          margin-bottom: 1.5rem;
+          margin-right: 0.5rem;
+        }
+
+        > div {
+          position: absolute;
+
+          > span {
+            padding: 3px 3px;
+            font-size: 0.8rem;
+            color: white;
+            background-color: #da16c6;
+            border-radius: 50px;
+          }
+        }
+      }
+    }
+  }
+  //
+  .navigation-auth {
+    position: relative;
+    //////
+    .toggle-dropdown-btn {
+      display: flex;
+      align-items: center;
+      font-weight: 800;
+      color: rgb(198, 194, 194);
+      background-color: transparent;
+      border: none;
+      &:focus {
+        outline: none;
+      }
+      > span {
+      }
+    }
+
+    .userInfo-ul {
+      position: absolute;
+      right: 0;
+      padding: 0.4rem 0.8rem;
+      bottom: 30px;
+      list-style: none;
+      background-color: white;
+      color: black;
+      border-radius: 10px;
+
+      .admin-link {
+        display: block;
+        padding: 8px 16px;
+        color: black;
+        border-radius: 10px;
+
+        &:hover {
+          background-color: #e757dd;
+          padding: 1rem;
+          color: white;
+        }
+      }
+
+      > li {
+        .link-profile {
+          display: block;
+          padding: 8px 16px;
+          color: black;
+          border-radius: 10px;
+
+          &:hover {
+            background-color: #42b86b;
+            color: white;
+          }
+        }
+      }
+      > li {
+        .link-logout {
+          display: block;
+          text-align: left;
+          width: 100%;
+          padding: 8px 16px;
+          border-radius: 10px;
+
+          &:hover {
+            background-color: #d9333b;
+            color: white;
+          }
+        }
+      }
+    }
+    //
+    .log-reg-ul {
+      display: flex;
+      list-style: none;
+      > li {
+        .link-login {
+          display: flex;
+          transition: all 0.1s;
+          align-items: center;
+          &:hover {
+            transform: translateX(0.5rem);
+          }
+          .Icon {
+          }
+          > span {
+            margin-left: 4px;
+          }
+        }
+      }
+    }
+  }
+}
