@@ -37,7 +37,7 @@ const Navigation = () => {
         <Link to="/cart" className="link-cart">
           <div className="cart-icon">
             <AiOutlineShoppingCart className="Icon" size={26} />
-            <span className="">Cart</span>
+            <span className="cart-title">Cart</span>
           </div>
           <div className="cart-count">
             <span>
@@ -48,8 +48,8 @@ const Navigation = () => {
         <Link to="/favorite" className="link-favorites">
           <div className="favorites-icon">
             <FaHeart className="Icon" size={26} />
-            <span>Favorites</span>
-            <div>
+            <span className="fav-span">Favorites</span>
+            <div className="fav-count">
               <span>34</span>
             </div>
           </div>

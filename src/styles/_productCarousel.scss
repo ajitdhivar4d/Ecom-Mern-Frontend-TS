@@ -13,6 +13,7 @@
       //   carousel-slide-info
 
       .carousel-slide-info {
+        padding: 1rem;
         width: 100%;
         display: flex;
         justify-content: space-between;
@@ -20,6 +21,9 @@
         .carousel-slide-name {
           > h2 {
             font-weight: 400;
+          }
+          .description {
+            margin-top: 10px;
           }
         }
 

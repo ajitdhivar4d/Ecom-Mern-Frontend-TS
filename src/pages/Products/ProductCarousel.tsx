@@ -38,8 +38,7 @@ const ProductCarousel = () => {
             <div className="carousel-slide-name">
               <h2>Name</h2>
               <p>$ Price</p>
-              <br />
-              <p>
+              <p className="description">
                 description description description description description
                 description description
               </p>
