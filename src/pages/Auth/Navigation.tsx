@@ -10,8 +10,8 @@ import { FaHeart } from "react-icons/fa";
 import { useState } from "react";
 import { IoIosArrowDropup, IoIosArrowDropdown } from "react-icons/io";
 
-const userInfo = false;
-const userInfoIsAdmin = false;
+const userInfo = true;
+const userInfoIsAdmin = true;
 
 const Navigation = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);

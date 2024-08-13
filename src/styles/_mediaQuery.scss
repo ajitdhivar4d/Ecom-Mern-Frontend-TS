@@ -18,6 +18,7 @@
 @media screen and (max-width: 1200px) {
   .navigation {
     flex-direction: row;
+    position: static;
     width: 100%;
     height: 10vh;
 
@@ -60,6 +61,13 @@
     }
 
     .navigation-auth {
+      position: static;
+
+      .userInfo-ul {
+        top: 85px;
+        right: 3px;
+      }
+
       .log-reg-ul {
         flex-direction: row;
 
@@ -84,6 +92,8 @@
 @media screen and (min-width: 1200px) {
   .navigation {
     flex-direction: column;
+    position: fixed;
+
     width: 8%;
     height: 100vh;
     &:hover {
@@ -129,6 +139,13 @@
     }
 
     .navigation-auth {
+      position: relative;
+
+      .userInfo-ul {
+        right: 0;
+        bottom: 30px;
+      }
+
       .log-reg-ul {
         flex-direction: column;
 
