@@ -4,7 +4,7 @@ import Product from "./Products/Product";
 
 const Home = () => {
   return (
-    <div style={{ marginLeft: "9%" }} className="home-container">
+    <div className="home-container">
       <Header />
       <>
         <div className="special-products">

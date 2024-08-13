@@ -3,8 +3,6 @@
   margin-left: 5rem;
 
   .carousel-slider {
-    width: 40rem;
-
     .carousel-slide {
       > img {
         width: 100%;
@@ -22,23 +20,16 @@
         .carousel-slide-name {
           > h2 {
             font-weight: 400;
-            font-size: 1rem;
-          }
-          > p {
-            width: 20rem;
-            font-size: 1rem;
           }
         }
 
         .carousel-slide-brand-rate {
           display: flex;
           justify-content: space-between;
-          width: 20rem;
           .carousel-slide-brand {
             > h1 {
               display: flex;
               align-items: center;
-              margin-bottom: 24px;
               font-size: 12px;
               font-weight: 400;
 
@@ -52,7 +43,6 @@
             > h1 {
               display: flex;
               align-items: center;
-              margin-bottom: 24px;
               font-size: 12px;
               font-weight: 400;
 
