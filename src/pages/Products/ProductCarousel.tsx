@@ -12,11 +12,11 @@ import {
 const img1 =
   "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-14-model-unselect-gallery-2-202303_GEO_EMEA_FMT_WHH?wid=1280&hei=492&fmt=p-jpg&qlt=80&.v=NjB6M3BqTGRudDZtakJrUG5tT2pHTGdzSmpObkZCM3MrNmJ5SkhESlNDZ1hBSXMwL2Jwdk9oTk42KzZHdTdNUStPZEo4N1VRRWxvaDh0eHhOVmNKTVdTMFRmWmtRdTBHQlhFcGIzZUhKekJuNDBzcjA0aG5jQUJ1UTI2VzJJR1kwNVp6MmhlRFdDdTNsVDcwQXNhL05RPT0=&traceId=1";
 
-const img2 =
-  "https://cdn.britannica.com/09/241709-050-149181B1/apple-iphone-11-2019.jpg";
+// const img2 =
+//   "https://cdn.britannica.com/09/241709-050-149181B1/apple-iphone-11-2019.jpg";
 
-const img3 =
-  "https://www.cnet.com/a/img/resize/f80d30024ee6d0bf2ef6a62aff582dacf1990867/hub/2023/09/18/faee0366-a837-41be-a084-b359bcbf3f93/iphone15-pro-88.jpg?auto=webp&fit=crop&height=362&width=644";
+// const img3 =
+//   "https://www.cnet.com/a/img/resize/f80d30024ee6d0bf2ef6a62aff582dacf1990867/hub/2023/09/18/faee0366-a837-41be-a084-b359bcbf3f93/iphone15-pro-88.jpg?auto=webp&fit=crop&height=362&width=644";
 
 const ProductCarousel = () => {
   const settings = {
