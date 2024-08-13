@@ -167,6 +167,9 @@
     .log-reg-ul {
       display: flex;
       list-style: none;
+      padding-top: 5px;
+      gap: 1rem;
+
       > li {
         .link-login {
           display: flex;

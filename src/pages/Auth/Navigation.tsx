@@ -117,13 +117,13 @@ const Navigation = () => {
           <ul className="log-reg-ul">
             <li>
               <Link to="/login" className="link-login">
-                <AiOutlineLogin className="Icon" />
+                <AiOutlineLogin className="Icon" size={23} />
                 <span>Login</span>
               </Link>
             </li>
             <li>
               <Link to="/register" className="link-login">
-                <AiOutlineUserAdd className="Icon" />
+                <AiOutlineUserAdd className="Icon" size={23} />
                 <span>Register</span>
               </Link>
             </li>
