@@ -62,6 +62,7 @@
 
     .navigation-auth {
       position: static;
+      padding-top: 10px;
 
       .userInfo-ul {
         top: 85px;
@@ -169,7 +170,7 @@
 @media screen and (max-width: 1200px) {
   .home-container {
     margin-left: 0;
-    margin-top: 70px;
+    margin-top: 10px;
   }
 }
 

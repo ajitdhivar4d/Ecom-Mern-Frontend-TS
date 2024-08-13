@@ -7,7 +7,7 @@ import {
   AiOutlineUserAdd,
 } from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosArrowDropup, IoIosArrowDropdown } from "react-icons/io";
 
 const userInfo = true;
@@ -59,12 +59,18 @@ const Navigation = () => {
         {userInfo && (
           <button onClick={toggleDropdown} className="toggle-dropdown-btn">
             {/* // */}
-            {userInfo ? <span>UserName</span> : <></>}
+            {userInfo ? <span>UserName </span> : <></>}
             {/* // */}
             {userInfo && dropdownOpen ? (
-              <IoIosArrowDropdown size={26} />
-            ) : (
+              useWindowsWidth() > 700 ? (
+                <IoIosArrowDropdown size={26} />
+              ) : (
+                <IoIosArrowDropup size={26} />
+              )
+            ) : useWindowsWidth() > 700 ? (
               <IoIosArrowDropup size={26} />
+            ) : (
+              <IoIosArrowDropdown size={26} />
             )}
           </button>
         )}
@@ -132,6 +138,19 @@ const Navigation = () => {
       </div>
     </div>
   );
+};
+
+const useWindowsWidth = () => {
+  const [windowsWidth, setWindowsWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowsWidth(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return windowsWidth;
 };
 
 export default Navigation;
