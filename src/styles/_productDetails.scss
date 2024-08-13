@@ -1,0 +1,109 @@
+.product-container {
+  ///
+  .go-back {
+    > a {
+      font-weight: 600;
+      color: black;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  // Product Details
+
+  .product-details {
+    display: flex;
+    flex-wrap: wrap;
+
+    .img-div {
+      position: relative;
+
+      > img {
+        margin-right: 2rem;
+        height: auto;
+      }
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-left: 1rem;
+
+      > h2 {
+        font-weight: 600;
+      }
+
+      .p-description {
+        display: flex;
+        margin: 0.5rem 0;
+        color: #7a7777;
+        word-wrap: break-word;
+      }
+
+      .p-price {
+        font-size: 1.6rem;
+        margin: 0.5rem 0;
+        font-weight: bold;
+      }
+
+      .brand-rate {
+        display: flex;
+        .brand {
+          > h1 {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 400;
+            margin: 10px 0;
+
+            .icon {
+              margin-right: 8px;
+              font-size: 14px;
+            }
+          }
+        }
+        .rate {
+          > h1 {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 400;
+            margin: 10px 0;
+
+            .icon {
+              margin-right: 8px;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+
+      .rating-stock {
+        display: flex;
+        flex-wrap: w;
+        justify-content: space-between;
+
+        .countInStock {
+          > select {
+            padding: 8px;
+            width: 6rem;
+            border-radius: 10px;
+          }
+        }
+      }
+
+      .addToCart {
+        > button {
+          background-color: rgb(201, 37, 187);
+          color: white;
+          padding: 8px 16px;
+          border-radius: 10px;
+          margin-top: 1rem;
+          border: none;
+        }
+      }
+    }
+  }
+}

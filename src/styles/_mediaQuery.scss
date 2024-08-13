@@ -182,6 +182,11 @@
         font-size: 14px;
       }
     }
+
+    // Product container
+    .product-container {
+      justify-content: space-around;
+    }
   }
 }
 
@@ -198,11 +203,16 @@
         padding: 8px 40px;
       }
     }
+
+    // Product container
+    .product-container {
+      justify-content: space-evenly;
+    }
   }
 }
 
 // Product Carousel
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 700px) {
   .product-main {
     margin: 0;
 
@@ -229,6 +239,52 @@
 
           .carousel-slide-brand-rate {
             width: 18rem;
+            margin-top: 10px;
+
+            .carousel-slide-brand {
+              > h1 {
+                margin-bottom: 10px;
+              }
+            }
+            .carousel-slide-rate {
+              > h1 {
+                margin-bottom: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1200px) {
+  .product-main {
+    margin: 0;
+
+    .carousel-slider {
+      width: 40rem;
+
+      .carousel-slide {
+        > img {
+          height: 15rem;
+        }
+
+        .carousel-slide-info {
+          flex-direction: row;
+
+          .carousel-slide-name {
+            width: 60%;
+            > h2 {
+              font-size: 14px;
+            }
+            > p {
+              font-size: 14px;
+            }
+          }
+
+          .carousel-slide-brand-rate {
+            width: 22rem;
             margin-top: 10px;
 
             .carousel-slide-brand {
@@ -288,6 +344,194 @@
               }
             }
           }
+        }
+      }
+    }
+  }
+}
+
+// Product Details
+@media screen and (max-width: 700px) {
+  .product-container {
+    margin-left: 0;
+    margin-top: 10px;
+
+    .go-back {
+      > a {
+        margin-left: 1rem;
+      }
+    }
+
+    .product-details {
+      margin-top: 0;
+      margin-left: 2rem;
+
+      .img-div {
+        > img {
+          width: 200px;
+        }
+      }
+
+      .info {
+        width: 15rem;
+
+        > h2 {
+          font-size: 1rem;
+        }
+
+        .p-description {
+          font-size: 12px;
+        }
+        .brand-rate {
+          gap: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1200px) {
+  .product-container {
+    margin-left: 0;
+    margin-top: 10px;
+
+    .go-back {
+      > a {
+        margin-left: 5rem;
+      }
+    }
+
+    .product-details {
+      margin-top: 0;
+      margin-left: 0;
+
+      .img-div {
+        > img {
+          width: 300px;
+        }
+      }
+
+      .info {
+        width: 20rem;
+
+        > h2 {
+          font-size: 1.5rem;
+        }
+
+        .p-description {
+          font-size: 14px;
+        }
+
+        .p-description {
+          font-size: 14px;
+        }
+
+        .brand-rate {
+          gap: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .product-container {
+    margin-left: 90px;
+
+    .go-back {
+      > a {
+        margin-left: 10rem;
+      }
+    }
+
+    .product-details {
+      margin-top: 0;
+      margin-left: 0;
+      margin-top: 2rem;
+      margin-left: 4rem;
+
+      .img-div {
+        > img {
+          width: 300px;
+        }
+      }
+
+      .info {
+        width: 30rem;
+
+        > h2 {
+          font-size: 1.5rem;
+        }
+        .p-description {
+          font-size: 14px;
+        }
+
+        .brand-rate {
+          gap: 4rem;
+        }
+      }
+    }
+  }
+}
+
+// Product Tabs
+@media screen and (max-width: 700px) {
+  .review-container {
+    margin-left: 10rem;
+
+    .product-tab-container {
+      flex-direction: column;
+      .main-section {
+        flex-direction: row;
+        width: 100%;
+      }
+
+      .reviews-section {
+        .review {
+          width: 17rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1200px) {
+  .review-container {
+    margin-left: 3rem;
+
+    .product-tab-container {
+      margin-left: 1.2rem;
+      width: 600px;
+      flex-direction: column;
+      .main-section {
+        flex-direction: row;
+        width: 100%;
+      }
+
+      .reviews-section {
+        .review {
+          width: 10rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .review-container {
+    margin-left: 10rem;
+
+    .product-tab-container {
+      width: 100%;
+      flex-direction: row;
+      .main-section {
+        flex-direction: column;
+        width: 20rem;
+      }
+
+      .reviews-section {
+        .review {
+          width: 10rem;
         }
       }
     }
