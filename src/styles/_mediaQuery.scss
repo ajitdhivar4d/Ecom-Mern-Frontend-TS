@@ -771,7 +771,7 @@
 // ProductCard
 @media screen and (max-width: 700px) {
   .productCard-container {
-    width: 18rem;
+    width: 20rem;
     margin: auto;
 
     > section {
@@ -791,6 +791,21 @@
           font-size: 14px;
         }
         > p {
+          font-size: 10px;
+        }
+      }
+      > p {
+        font-size: 10px;
+      }
+
+      > section {
+        .link-readMore {
+          font-size: 12px;
+          padding: 6px 10px;
+        }
+        > button {
+          padding: 4px;
+          font-size: 5px;
         }
       }
     }
@@ -815,9 +830,23 @@
       > div {
         > h5 {
           margin-bottom: 8px;
-          font-size: 20px;
+          font-size: 16px;
         }
         > p {
+          font-size: 14px;
+        }
+      }
+      > p {
+        font-size: 14px;
+      }
+
+      > section {
+        .link-readMore {
+          font-size: 12px;
+          padding: 6px 10px;
+        }
+        > button {
+          padding: 6px;
         }
       }
     }
@@ -842,9 +871,24 @@
       > div {
         > h5 {
           margin-bottom: 8px;
-          font-size: 20px;
+          font-size: 16px;
         }
         > p {
+          font-size: 14px;
+        }
+      }
+
+      > p {
+        font-size: 14px;
+      }
+
+      > section {
+        .link-readMore {
+          font-size: 14px;
+          padding: 8px 12px;
+        }
+        > button {
+          padding: 6px;
         }
       }
     }
