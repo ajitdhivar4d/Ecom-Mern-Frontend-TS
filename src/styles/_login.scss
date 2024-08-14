@@ -1,0 +1,83 @@
+.login-container {
+  background-color: black;
+
+  > section {
+    display: flex;
+
+    .login-form {
+      margin-right: 4rem;
+      margin-top: 5rem;
+
+      > h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: white;
+      }
+      > form {
+        .email {
+          > label {
+            display: block;
+            font-size: 14px;
+            font-weight: normal;
+            color: white;
+          }
+          > input {
+            margin-top: 4px;
+            padding: 1px 36px 1px 12px;
+            width: 300px;
+            border-radius: 7px;
+            height: 35px;
+            margin-bottom: 20px;
+          }
+        }
+
+        .password {
+          > label {
+            display: block;
+            font-size: 14px;
+            font-weight: normal;
+            color: white;
+          }
+          > input {
+            margin-top: 4px;
+            padding: 1px 36px 1px 12px;
+            width: 300px;
+            border-radius: 7px;
+            height: 35px;
+            margin-bottom: 20px;
+          }
+        }
+
+        > button {
+          background-color: rgb(230, 77, 199);
+          color: white;
+          padding: 8px 16px;
+          border-radius: 10px;
+          cursor: pointer;
+          margin-right: 1rem;
+        }
+      }
+
+      > div {
+        margin-top: 1rem;
+
+        > p {
+          color: white;
+
+          > a {
+            color: rgb(179, 36, 158);
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+
+    > img {
+      width: 50%;
+      border-radius: 10px;
+    }
+  }
+}
