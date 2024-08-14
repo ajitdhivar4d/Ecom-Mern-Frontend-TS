@@ -30,47 +30,57 @@ const Shop = () => {
     <div className="shop-container">
       <div className="shop-section">
         <div className="filter-section">
-          <h2 className="h2-category">Filter by Categories</h2>
+          {/* // */}
+          <div className="filter-category-brand">
+            <div className="filter-category">
+              <h2 className="h2-category">Filter by Categories</h2>
 
-          <div className="div-category">
-            {categories?.map((c) => (
-              <div key={c._id} className="div-key">
-                <div>
-                  <input type="checkbox" id="red-checkbox" />
+              <div className="div-category">
+                {categories?.map((c) => (
+                  <div key={c._id} className="div-key">
+                    <div>
+                      <input type="checkbox" id="red-checkbox" />
 
-                  <label htmlFor="pink-checkbox">{c.name}</label>
-                </div>
+                      <label htmlFor="pink-checkbox">{c.name}</label>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            {/* // */}
+            <div className="filter-brand">
+              <h2 className="h2-brand">Filter by Brands</h2>
+              <div className="div-brand">
+                {uniqueBrands?.map((brand) => (
+                  <React.Fragment key={brand}>
+                    <div>
+                      <input type="radio" id={brand} name="brand" />
+
+                      <label htmlFor="pink-radio">{brand}</label>
+                    </div>
+                  </React.Fragment>
+                ))}
+              </div>
+            </div>
           </div>
 
-          <h2 className="h2-brand">Filter by Brands</h2>
-
-          <div className="div-brand">
-            {uniqueBrands?.map((brand) => (
-              <React.Fragment key={brand}>
-                <div>
-                  <input type="radio" id={brand} name="brand" />
-
-                  <label htmlFor="pink-radio">{brand}</label>
-                </div>
-              </React.Fragment>
-            ))}
-          </div>
-
-          <h2 className="h2-price">Filer by Price</h2>
-
-          <div className="div-price">
-            <input
-              type="text"
-              placeholder="Enter Price"
-              value={priceFilter}
-              onChange={handlePriceChange}
-            />
-          </div>
-
-          <div className="div-reset">
-            <button onClick={() => window.location.reload()}>Reset</button>
+          {/* // */}
+          <div className="filter-price-reset">
+            <div className="filter-price">
+              <h2 className="h2-price">Filer by Price</h2>
+              <div className="div-price">
+                <input
+                  type="text"
+                  placeholder="Enter Price"
+                  value={priceFilter}
+                  onChange={handlePriceChange}
+                />
+              </div>
+            </div>
+            {/* / */}
+            <div className="div-reset">
+              <button onClick={() => window.location.reload()}>Reset</button>
+            </div>
           </div>
         </div>
 

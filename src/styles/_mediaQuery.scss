@@ -543,66 +543,84 @@
   .shop-container {
     margin-left: 0;
     margin-top: 0;
+    .shop-section {
+      flex-direction: column;
+      //
 
-    .filter-section {
-      width: 10rem;
-      padding: 4px;
+      .filter-section {
+        width: 100%;
+        padding: 4px;
 
-      .h2-category {
-        font-size: 0.7rem;
-        padding: 4px 2px;
-        width: 75%;
-        margin: auto;
-      }
+        .filter-category-brand {
+          .filter-category {
+            .h2-category {
+              font-size: 0.7rem;
+              padding: 4px 2px;
+              width: 75%;
+              margin: auto;
+            }
 
-      .div-category {
-        padding: 2px;
-        font-size: 0.6rem;
+            .div-category {
+              padding: 5px;
+              font-size: 0.8rem;
+              display: flex;
+              flex-wrap: wrap;
+              gap: 10px;
+              justify-content: center;
+              align-items: center;
 
-        .div-key {
-          > div {
-            > input {
-              width: 0.7rem;
-              height: 0.7rem;
+              .div-key {
+                > div {
+                  > input {
+                    width: 0.7rem;
+                    height: 0.7rem;
+                  }
+                }
+              }
+            }
+          }
+          .filter-brand {
+            .h2-brand {
+              font-size: 0.7rem;
+              padding: 4px 2px;
+              width: 75%;
+              margin: auto;
+            }
+
+            .div-brand {
+              padding: 2px;
+              font-size: 0.6rem;
+
+              > div {
+                > input {
+                  width: 0.4rem;
+                  height: 0.4rem;
+                }
+              }
             }
           }
         }
-      }
 
-      .h2-brand {
-        font-size: 0.7rem;
-        padding: 4px 2px;
-        width: 75%;
-        margin: auto;
-      }
-
-      .div-brand {
-        padding: 2px;
-        font-size: 0.6rem;
-
-        > div {
-          > input {
-            width: 0.4rem;
-            height: 0.4rem;
+        .filter-price-reset {
+          .filter-price {
+            .h2-price {
+              font-size: 0.7rem;
+              padding: 4px 2px;
+              width: 75%;
+              margin: auto;
+            }
+            .div-price {
+              padding: 8px;
+              font-size: 0.6rem;
+              > input {
+                padding: 4px 8px;
+              }
+            }
+          }
+          .div-reset {
+            padding: 6px;
           }
         }
-      }
-
-      .h2-price {
-        font-size: 0.7rem;
-        padding: 4px 2px;
-        width: 75%;
-        margin: auto;
-      }
-      .div-price {
-        padding: 8px;
-        font-size: 0.6rem;
-        > input {
-          padding: 4px 8px;
-        }
-      }
-      .div-reset {
-        padding: 6px;
       }
     }
   }
@@ -612,51 +630,63 @@
   .shop-container {
     margin-left: 0;
     margin-top: 0;
-
-    .filter-section {
-      width: 15rem;
-      padding: 10px;
-
-      .h2-category {
-        font-size: 0.9rem;
-        padding: 6px 0;
-      }
-
-      .div-category {
+    .shop-section {
+      //
+      flex-direction: row;
+      .filter-section {
+        width: 15rem;
         padding: 10px;
-        font-size: 0.8rem;
-      }
 
-      .h2-brand {
-        font-size: 0.9rem;
-        padding: 6px 0;
-      }
+        .filter-category-brand {
+          .filter-category {
+            .h2-category {
+              font-size: 0.9rem;
+              padding: 6px 0;
+            }
 
-      .div-brand {
-        padding: 10px;
-        font-size: 0.8rem;
+            .div-category {
+              padding: 10px;
+              font-size: 0.8rem;
+            }
+          }
+          .filter-brand {
+            .h2-brand {
+              font-size: 0.9rem;
+              padding: 6px 0;
+            }
 
-        > div {
-          > input {
-            width: 0.8rem;
-            height: 0.8rem;
+            .div-brand {
+              padding: 10px;
+              font-size: 0.8rem;
+
+              > div {
+                > input {
+                  width: 0.8rem;
+                  height: 0.8rem;
+                }
+              }
+            }
           }
         }
-      }
 
-      .h2-price {
-        font-size: 0.9rem;
-        padding: 6px 0;
-      }
-      .div-price {
-        padding: 10px;
-        font-size: 0.8rem;
-        > input {
-          padding: 6px 10px;
+        .filter-price-reset {
+          .filter-price {
+            .h2-price {
+              font-size: 0.9rem;
+              padding: 6px 0;
+            }
+            .div-price {
+              padding: 10px;
+              font-size: 0.8rem;
+              > input {
+                padding: 6px 10px;
+              }
+            }
+          }
+          .div-reset {
+            padding: 10px;
+          }
         }
-      }
-      .div-reset {
-        padding: 10px;
       }
     }
   }
@@ -667,53 +697,65 @@
     margin-left: 8rem;
     margin-top: 1rem;
 
-    .filter-section {
-      width: 20rem;
-      padding: 12px;
+    .shop-section {
+      //
+      flex-direction: row;
+      .filter-section {
+        width: 20rem;
+        padding: 12px;
 
-      .h2-category {
-        font-size: 1rem;
-        padding: 8px 0;
-        width: 100%;
-      }
+        .filter-category-brand {
+          .filter-category {
+            .h2-category {
+              font-size: 1rem;
+              padding: 8px 0;
+              width: 100%;
+            }
 
-      .div-category {
-        padding: 20px;
-        font-size: 0.9rem;
-      }
+            .div-category {
+              padding: 20px;
+              font-size: 0.9rem;
+            }
+          }
+          .filter-brand {
+            .h2-brand {
+              font-size: 1rem;
+              padding: 8px 0;
+            }
 
-      .h2-brand {
-        font-size: 1rem;
-        padding: 8px 0;
-      }
+            .div-brand {
+              padding: 20px;
+              font-size: 0.9rem;
 
-      .div-brand {
-        padding: 20px;
-        font-size: 0.9rem;
-
-        > div {
-          > input {
-            width: 1rem;
-            height: 1rem;
+              > div {
+                > input {
+                  width: 1rem;
+                  height: 1rem;
+                }
+              }
+            }
           }
         }
-      }
 
-      .h2-price {
-        font-size: 1rem;
-        padding: 8px 0;
-      }
+        .filter-price-reset {
+          .filter-price {
+            .h2-price {
+              font-size: 1rem;
+              padding: 8px 0;
+            }
 
-      .div-price {
-        padding: 20px;
-        font-size: 0.9rem;
-        > input {
-          padding: 8px 12px;
+            .div-price {
+              padding: 20px;
+              font-size: 0.9rem;
+              > input {
+                padding: 8px 12px;
+              }
+            }
+          }
+          .div-reset {
+            padding: 20px;
+          }
         }
-      }
-
-      .div-reset {
-        padding: 20px;
       }
     }
   }
