@@ -770,10 +770,83 @@
 
 // ProductCard
 @media screen and (max-width: 700px) {
+  .productCard-container {
+    width: 18rem;
+    margin: auto;
+
+    > section {
+      .link-brand-img {
+        > span {
+          font-size: 9px;
+        }
+      }
+    }
+
+    .productCard-info {
+      padding: 5px;
+
+      > div {
+        > h5 {
+          margin-bottom: 8px;
+          font-size: 14px;
+        }
+        > p {
+        }
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 700px) and (max-width: 1200px) {
+  .productCard-container {
+    width: 16rem;
+
+    > section {
+      .link-brand-img {
+        > span {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .productCard-info {
+      padding: 15px;
+
+      > div {
+        > h5 {
+          margin-bottom: 8px;
+          font-size: 20px;
+        }
+        > p {
+        }
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 1200px) {
+  .productCard-container {
+    width: 18rem;
+
+    > section {
+      .link-brand-img {
+        > span {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .productCard-info {
+      padding: 20px;
+
+      > div {
+        > h5 {
+          margin-bottom: 8px;
+          font-size: 20px;
+        }
+        > p {
+        }
+      }
+    }
+  }
 }

@@ -1,5 +1,4 @@
 .productCard-container {
-  width: 10rem;
   position: relative;
   background-color: #1a1a1a;
   border-radius: 10px;
@@ -14,7 +13,6 @@
         right: 12px;
         background-color: rgb(237, 182, 220);
         color: rgb(221, 35, 187);
-        font-size: 14px;
         font-weight: 500;
         margin-right: 8px;
         padding: 2px 10px;
@@ -30,15 +28,11 @@
   }
 
   .productCard-info {
-    padding: 20px;
-
     > div {
       display: flex;
       justify-content: space-between;
 
       > h5 {
-        margin-bottom: 8px;
-        font-size: 20px;
         color: white;
       }
 
