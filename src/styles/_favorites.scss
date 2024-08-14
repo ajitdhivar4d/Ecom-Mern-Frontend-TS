@@ -1,0 +1,13 @@
+.favorites-container {
+  > h1 {
+    font-size: 1.3rem;
+    font: bold;
+    margin-left: 3rem;
+    margin-top: 3rem;
+  }
+
+  .favorites-items {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
