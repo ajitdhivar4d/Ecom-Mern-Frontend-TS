@@ -6,7 +6,7 @@
 
     .filter-section {
       background-color: #151515;
-      padding: 12px;
+
       margin: 8px 0 8px 0;
 
       .h2-category {
@@ -14,7 +14,7 @@
         background-color: black;
         margin-bottom: 8px;
         color: white;
-        border-radius: 10px;
+        border-radius: 5px;
       }
 
       .div-category {
@@ -28,8 +28,6 @@
             align-items: center;
 
             > input {
-              width: 1rem;
-              height: 1rem;
               color: rgb(189, 77, 171);
               background-color: rgb(198, 194, 194);
               border: rgb(95, 93, 93);
@@ -37,7 +35,6 @@
             }
             > label {
               margin-left: 8px;
-              font-size: 14px;
               font-weight: 500;
               color: white;
             }

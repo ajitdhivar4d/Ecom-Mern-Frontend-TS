@@ -546,24 +546,38 @@
 
     .filter-section {
       width: 10rem;
+      padding: 4px;
 
       .h2-category {
         font-size: 0.7rem;
-        padding: 4px 0;
+        padding: 4px 2px;
+        width: 75%;
+        margin: auto;
       }
 
       .div-category {
-        padding: 8px;
+        padding: 2px;
         font-size: 0.6rem;
+
+        .div-key {
+          > div {
+            > input {
+              width: 0.7rem;
+              height: 0.7rem;
+            }
+          }
+        }
       }
 
       .h2-brand {
         font-size: 0.7rem;
-        padding: 4px 0;
+        padding: 4px 2px;
+        width: 75%;
+        margin: auto;
       }
 
       .div-brand {
-        padding: 8px;
+        padding: 2px;
         font-size: 0.6rem;
 
         > div {
@@ -576,7 +590,9 @@
 
       .h2-price {
         font-size: 0.7rem;
-        padding: 4px 0;
+        padding: 4px 2px;
+        width: 75%;
+        margin: auto;
       }
       .div-price {
         padding: 8px;
@@ -599,6 +615,7 @@
 
     .filter-section {
       width: 15rem;
+      padding: 10px;
 
       .h2-category {
         font-size: 0.9rem;
@@ -652,10 +669,12 @@
 
     .filter-section {
       width: 20rem;
+      padding: 12px;
 
       .h2-category {
         font-size: 1rem;
         padding: 8px 0;
+        width: 100%;
       }
 
       .div-category {
