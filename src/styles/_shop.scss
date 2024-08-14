@@ -1,0 +1,125 @@
+.shop-container {
+  width: 100%;
+
+  .shop-section {
+    display: flex;
+
+    .filter-section {
+      background-color: #151515;
+      padding: 12px;
+      margin: 8px 0 8px 0;
+
+      .h2-category {
+        text-align: center;
+        background-color: black;
+        margin-bottom: 8px;
+        color: white;
+        border-radius: 10px;
+      }
+
+      .div-category {
+        width: 100%;
+
+        .div-key {
+          margin-bottom: 8px;
+
+          > div {
+            display: flex;
+            align-items: center;
+
+            > input {
+              width: 1rem;
+              height: 1rem;
+              color: rgb(189, 77, 171);
+              background-color: rgb(198, 194, 194);
+              border: rgb(95, 93, 93);
+              border-radius: 10px;
+            }
+            > label {
+              margin-left: 8px;
+              font-size: 14px;
+              font-weight: 500;
+              color: white;
+            }
+          }
+        }
+      }
+
+      .h2-brand {
+        text-align: center;
+        background-color: black;
+        margin-bottom: 8px;
+        color: white;
+        border-radius: 10px;
+      }
+
+      .div-brand {
+        width: 100%;
+
+        > div {
+          display: flex;
+          align-content: center;
+          margin-bottom: 10px;
+
+          > input {
+            align-self: center;
+            border-radius: 10px;
+            color: white;
+          }
+          > label {
+            margin-left: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: white;
+          }
+        }
+      }
+
+      .h2-price {
+        text-align: center;
+        background-color: black;
+        margin-bottom: 8px;
+        color: white;
+        border-radius: 10px;
+      }
+
+      .div-price {
+        width: 100%;
+
+        > input {
+          width: 100%;
+          border-radius: 10px;
+          border: none;
+        }
+      }
+
+      .div-reset {
+        padding: 20px;
+        padding-top: 0;
+
+        > button {
+          width: 100%;
+          border-radius: 10px;
+          margin: 1rem 0;
+          padding: 6px 0;
+        }
+      }
+    }
+
+    .shop-product-container {
+      padding: 12px;
+
+      > h2 {
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 8px;
+      }
+
+      > div {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+      }
+    }
+  }
+}

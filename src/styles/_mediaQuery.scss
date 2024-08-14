@@ -537,3 +537,175 @@
     }
   }
 }
+
+// Shop
+@media screen and (max-width: 700px) {
+  .shop-container {
+    margin-left: 0;
+    margin-top: 0;
+
+    .filter-section {
+      width: 10rem;
+
+      .h2-category {
+        font-size: 0.7rem;
+        padding: 4px 0;
+      }
+
+      .div-category {
+        padding: 8px;
+        font-size: 0.6rem;
+      }
+
+      .h2-brand {
+        font-size: 0.7rem;
+        padding: 4px 0;
+      }
+
+      .div-brand {
+        padding: 8px;
+        font-size: 0.6rem;
+
+        > div {
+          > input {
+            width: 0.4rem;
+            height: 0.4rem;
+          }
+        }
+      }
+
+      .h2-price {
+        font-size: 0.7rem;
+        padding: 4px 0;
+      }
+      .div-price {
+        padding: 8px;
+        font-size: 0.6rem;
+        > input {
+          padding: 4px 8px;
+        }
+      }
+      .div-reset {
+        padding: 6px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1200px) {
+  .shop-container {
+    margin-left: 0;
+    margin-top: 0;
+
+    .filter-section {
+      width: 15rem;
+
+      .h2-category {
+        font-size: 0.9rem;
+        padding: 6px 0;
+      }
+
+      .div-category {
+        padding: 10px;
+        font-size: 0.8rem;
+      }
+
+      .h2-brand {
+        font-size: 0.9rem;
+        padding: 6px 0;
+      }
+
+      .div-brand {
+        padding: 10px;
+        font-size: 0.8rem;
+
+        > div {
+          > input {
+            width: 0.8rem;
+            height: 0.8rem;
+          }
+        }
+      }
+
+      .h2-price {
+        font-size: 0.9rem;
+        padding: 6px 0;
+      }
+      .div-price {
+        padding: 10px;
+        font-size: 0.8rem;
+        > input {
+          padding: 6px 10px;
+        }
+      }
+      .div-reset {
+        padding: 10px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .shop-container {
+    margin-left: 8rem;
+    margin-top: 1rem;
+
+    .filter-section {
+      width: 20rem;
+
+      .h2-category {
+        font-size: 1rem;
+        padding: 8px 0;
+      }
+
+      .div-category {
+        padding: 20px;
+        font-size: 0.9rem;
+      }
+
+      .h2-brand {
+        font-size: 1rem;
+        padding: 8px 0;
+      }
+
+      .div-brand {
+        padding: 20px;
+        font-size: 0.9rem;
+
+        > div {
+          > input {
+            width: 1rem;
+            height: 1rem;
+          }
+        }
+      }
+
+      .h2-price {
+        font-size: 1rem;
+        padding: 8px 0;
+      }
+
+      .div-price {
+        padding: 20px;
+        font-size: 0.9rem;
+        > input {
+          padding: 8px 12px;
+        }
+      }
+
+      .div-reset {
+        padding: 20px;
+      }
+    }
+  }
+}
+
+// ProductCard
+@media screen and (max-width: 700px) {
+}
+
+@media screen and (min-width: 700px) and (max-width: 1200px) {
+}
+
+@media screen and (min-width: 1200px) {
+}
