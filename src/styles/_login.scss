@@ -15,24 +15,7 @@
         color: white;
       }
       > form {
-        .email {
-          > label {
-            display: block;
-            font-size: 14px;
-            font-weight: normal;
-            color: white;
-          }
-          > input {
-            margin-top: 4px;
-            padding: 1px 36px 1px 12px;
-            width: 300px;
-            border-radius: 7px;
-            height: 35px;
-            margin-bottom: 20px;
-          }
-        }
-
-        .password {
+        .same {
           > label {
             display: block;
             font-size: 14px;

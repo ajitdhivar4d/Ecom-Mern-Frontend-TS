@@ -953,3 +953,173 @@
     }
   }
 }
+
+// cart
+@media screen and (max-width: 700px) {
+  .cart-container {
+    margin: 1rem;
+
+    .cart-section {
+      width: 300px;
+      > h1 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      .cart-items {
+        .img-section {
+          width: 5rem;
+          height: 5rem;
+        }
+
+        .cart-one {
+          .name-price-brand-section {
+            > a {
+              font-size: 14px;
+            }
+          }
+
+          .cart-two {
+            .countInStock-section {
+            }
+            .removeFromCartHandler {
+              > button {
+                margin-right: 0;
+              }
+            }
+          }
+        }
+      }
+      .checkoutHandler-section {
+        width: 15rem;
+      }
+    }
+    .checkoutHandler-section {
+      margin-top: 0;
+      > div {
+        padding: 5px;
+        > h2 {
+          font-size: 1rem;
+        }
+
+        > div {
+          font-size: 0.8rem;
+        }
+        > button {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1200px) {
+  .cart-container {
+    margin: 1rem 1rem 1rem 5rem;
+
+    .cart-section {
+      > h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      .cart-items {
+        .img-section {
+          width: 7rem;
+          height: 7rem;
+        }
+
+        .cart-one {
+          .name-price-brand-section {
+            > a {
+              font-size: 16px;
+            }
+          }
+          .cart-two {
+            .countInStock-section {
+            }
+            .removeFromCartHandler {
+              > button {
+                margin-right: 5rem;
+              }
+            }
+          }
+        }
+      }
+      .checkoutHandler-section {
+        width: 30rem;
+      }
+    }
+    .checkoutHandler-section {
+      margin-top: 2rem;
+      > div {
+        padding: 1rem;
+
+        > h2 {
+          font-size: 1.5rem;
+        }
+
+        > div {
+          font-size: 2rem;
+        }
+        > button {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .cart-container {
+    margin: 1rem 1rem 1rem 10rem;
+
+    .cart-section {
+      > h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      .cart-items {
+        .img-section {
+          width: 7rem;
+          height: 7rem;
+        }
+
+        .cart-one {
+          .name-price-brand-section {
+            > a {
+              font-size: 16px;
+            }
+          }
+          .cart-two {
+            .countInStock-section {
+            }
+            .removeFromCartHandler {
+              > button {
+                margin-right: 5rem;
+              }
+            }
+          }
+        }
+      }
+      .checkoutHandler-section {
+        width: 40rem;
+      }
+    }
+
+    .checkoutHandler-section {
+      margin-top: 2rem;
+      > div {
+        padding: 1rem;
+        > h2 {
+          font-size: 1.5rem;
+        }
+
+        > div {
+          font-size: 2rem;
+        }
+        > button {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

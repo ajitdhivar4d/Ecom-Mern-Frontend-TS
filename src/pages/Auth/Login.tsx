@@ -18,20 +18,22 @@ const Login = () => {
         <div className="login-form">
           <h1>Sign In</h1>
           <form onSubmit={submitHandler}>
-            <div className="email">
-              <label htmlFor="email">Email Address</label>
+            <div className="same">
+              <label htmlFor="email">Email </label>
               <input
                 type="email"
                 id="email"
+                placeholder="Enter Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-            <div className="password">
+            <div className="same">
               <label htmlFor="password">Password</label>
               <input
                 type="password"
                 id="password"
+                placeholder="Enter Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
