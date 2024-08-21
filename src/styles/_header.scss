@@ -3,9 +3,13 @@
   .header-container {
     display: flex;
     justify-content: space-around;
+    margin-bottom: 1rem;
     .top-product-grid {
       .small-products-grid {
+        height: 100%;
+        width: 100%;
         display: grid;
+        margin-top: 1rem;
         grid-template-columns: repeat(2, minmax(0, 1fr));
 
         //   small Product

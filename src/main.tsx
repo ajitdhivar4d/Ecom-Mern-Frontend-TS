@@ -7,6 +7,10 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import "./styles/app.scss";
 
+//
+import { Provider } from "react-redux";
+import { store } from "./redux/store.tsx";
+
 // Lazy-loaded components
 const Login = lazy(() => import("./pages/Auth/Login.tsx"));
 const Register = lazy(() => import("./pages/Auth/Register.tsx"));
@@ -36,43 +40,45 @@ const UserList = lazy(() => import("./pages/Admin/UserList.tsx"));
 
 // Render the application
 createRoot(document.getElementById("root")!).render(
-  <Suspense fallback={<div>Loading...</div>}>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          {/* Public Routes */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route index element={<Home />} />
-          <Route path="/favorite" element={<Favorites />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/user-orders" element={<UserOrder />} />
+  <Provider store={store}>
+    <Suspense fallback={<div>Loading...</div>}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            {/* Public Routes */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route index element={<Home />} />
+            <Route path="/favorite" element={<Favorites />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/shop" element={<Shop />} />
+            <Route path="/user-orders" element={<UserOrder />} />
 
-          {/* Protected Routes */}
-          <Route element={<PrivateRoute />}>
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/shipping" element={<Shipping />} />
-            <Route path="/placeorder" element={<PlaceOrder />} />
-            <Route path="/order/:id" element={<Order />} />
-          </Route>
+            {/* Protected Routes */}
+            <Route element={<PrivateRoute />}>
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/shipping" element={<Shipping />} />
+              <Route path="/placeorder" element={<PlaceOrder />} />
+              <Route path="/order/:id" element={<Order />} />
+            </Route>
 
-          {/* Admin Routes */}
-          <Route element={<AdminRoute userInfo isAdmin />}>
-            <Route path="/admin/userlist" element={<UserList />} />
-            <Route path="/admin/categorylist" element={<CategoryList />} />
-            <Route path="/admin/productlist" element={<ProductList />} />
-            <Route path="/admin/allproductslist" element={<AllProducts />} />
-            <Route path="/admin/orderlist" element={<OrderList />} />
-            <Route
-              path="/admin/product/update/:_id"
-              element={<ProductUpdate />}
-            />
-            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            {/* Admin Routes */}
+            <Route element={<AdminRoute userInfo isAdmin />}>
+              <Route path="/admin/userlist" element={<UserList />} />
+              <Route path="/admin/categorylist" element={<CategoryList />} />
+              <Route path="/admin/productlist" element={<ProductList />} />
+              <Route path="/admin/allproductslist" element={<AllProducts />} />
+              <Route path="/admin/orderlist" element={<OrderList />} />
+              <Route
+                path="/admin/product/update/:_id"
+                element={<ProductUpdate />}
+              />
+              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            </Route>
           </Route>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  </Suspense>,
+        </Routes>
+      </BrowserRouter>
+    </Suspense>
+  </Provider>,
 );
