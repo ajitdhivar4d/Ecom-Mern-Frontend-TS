@@ -1,20 +1,39 @@
 import { Link } from "react-router-dom";
 import HeartIcon from "./HeartIcon";
+import React from "react";
 
-const img =
-  "https://cdn.mos.cms.futurecdn.net/yDn3ZSXu9eSBxmXQDZ4PCF-1200-80.jpg";
+interface Product {
+  _id: string;
+  name: string;
+  image: string | undefined;
+  price: number;
+  rating: number;
+  numReviews: number;
+  countInStock: number;
+  brand: string;
+  category: string;
+  reviews: any[];
+  description: string;
+  quantity: number;
+  createdAt: string;
+  updatedAt: string;
+}
 
-const SmallProduct = () => {
+interface ProductProps {
+  product: Product;
+}
+
+const SmallProduct: React.FC<ProductProps> = ({ product }) => {
   return (
     <div className="small-product-container">
       <section>
-        <img src={img} alt="img" />
+        <img src={product.image} alt="img" />
         <HeartIcon />
         <div>
           <Link to="/product/:id">
             <h2>
-              <div>productName</div>
-              <span>$ productPrice</span>
+              <div>${product.name}</div>
+              <span>${product.price}</span>
             </h2>
           </Link>
         </div>

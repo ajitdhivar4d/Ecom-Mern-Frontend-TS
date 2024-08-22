@@ -30,7 +30,9 @@ interface Product {
   numReviews: number;
   price: number;
   countInStock: number;
-  reviews: Review[]; // Array of reviews for the product
+  reviews: Review[];
+  createdAt: string;
+  updatedAt: string;
 }
 
 // Interface representing the API response for fetching a list of products
