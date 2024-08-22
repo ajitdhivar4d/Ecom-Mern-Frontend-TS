@@ -27,13 +27,13 @@ const SmallProduct: React.FC<ProductProps> = ({ product }) => {
   return (
     <div className="small-product-container">
       <section>
-        <img src={product.image} alt="img" />
+        <img src={product.image || ""} alt={product.name} />
         <HeartIcon />
         <div>
-          <Link to="/product/:id">
+          <Link to={`/product/${product._id}`}>
             <h2>
-              <div>${product.name}</div>
-              <span>${product.price}</span>
+              <div>{product.name}</div>
+              <span>₹ {product.price}</span>
             </h2>
           </Link>
         </div>

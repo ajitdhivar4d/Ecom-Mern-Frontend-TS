@@ -10,6 +10,23 @@ import {
 } from "react-icons/fa";
 import { useGetTopProductsQuery } from "../../redux/api/productSlice";
 
+interface Product {
+  _id: string;
+  name: string;
+  image: string | undefined;
+  price: number;
+  rating: number;
+  numReviews: number;
+  countInStock: number;
+  brand: string;
+  category: string;
+  reviews: any[];
+  description: string;
+  quantity: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
 const ProductCarousel = () => {
   const { data, isLoading, error } = useGetTopProductsQuery();
 
@@ -31,15 +48,17 @@ const ProductCarousel = () => {
         <h1>Error Occurred </h1>
       ) : (
         <Slider {...settings} className="carousel-slider">
-          {topProducts?.map((product) => (
+          {topProducts?.map((product: Product) => (
             <div key={product._id} className="carousel-slide">
-              <img src={product.image} alt="img" />
+              <img src={product.image || ""} alt={product.name} />
               <div className="carousel-slide-info">
                 <div className="carousel-slide-name">
                   <h2>{product.name}</h2>
-                  <p>{product.price}</p>
+                  <p>₹ {product.price}</p>
                   <p className="description">
-                    {product.description.slice(0, 60)}...
+                    {product.description
+                      ? product.description.slice(0, 60) + "..."
+                      : "No description available"}
                   </p>
                 </div>
                 <div className="carousel-slide-brand-rate">

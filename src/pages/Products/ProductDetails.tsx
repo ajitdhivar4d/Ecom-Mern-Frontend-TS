@@ -33,7 +33,7 @@ const ProductDetails = () => {
     console.log("addToCartHandler");
   };
   return (
-    <div className="product-container">
+    <div className="product-details-container">
       <div className="go-back">
         <Link to="/" className=" ">
           Go Back

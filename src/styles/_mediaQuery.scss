@@ -352,7 +352,7 @@
 
 // Product Details
 @media screen and (max-width: 700px) {
-  .product-container {
+  .product-details-container {
     margin-left: 0;
     margin-top: 10px;
 
@@ -391,7 +391,7 @@
 }
 
 @media screen and (min-width: 700px) and (max-width: 1200px) {
-  .product-container {
+  .product-details-container {
     margin-left: 0;
     margin-top: 10px;
 
@@ -435,7 +435,7 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .product-container {
+  .product-details-container {
     margin-left: 90px;
 
     .go-back {

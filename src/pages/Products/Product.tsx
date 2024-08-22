@@ -1,20 +1,33 @@
 import { Link } from "react-router-dom";
 import HeartIcon from "./HeartIcon";
 
-const product = {
-  _id: "4578",
-  image:
-    "https://www.apple.com/newsroom/images/product/iphone/standard/Apple_iphone_11-rosette-family-lineup-091019_big.jpg.large.jpg",
-  name: "Iphone 5",
-  price: "45000",
-};
+interface Product {
+  _id: string;
+  name: string;
+  image: string | undefined;
+  price: number;
+  rating: number;
+  numReviews: number;
+  countInStock: number;
+  brand: string;
+  category: string;
+  reviews: any[];
+  description: string;
+  quantity: number;
+  createdAt: string;
+  updatedAt: string;
+}
 
-const Product = () => {
+interface ProductProps {
+  product: Product;
+}
+
+const Product: React.FC<ProductProps> = ({ product }) => {
   return (
     <div className="product">
       <div className="one">
         <img
-          src={product.image}
+          src={product.image || ""}
           alt={product.name}
           className="w-[30rem] rounded"
         />
@@ -23,8 +36,8 @@ const Product = () => {
       <div className="two">
         <Link to={`/product/${product._id}`} className="two-link">
           <h2>
-            <div>{product.name}</div>
-            <span>$ {product.price}</span>
+            <div>{product.name.slice(0, 20)}</div>
+            <span>₹ {product.price}</span>
           </h2>
         </Link>
       </div>
