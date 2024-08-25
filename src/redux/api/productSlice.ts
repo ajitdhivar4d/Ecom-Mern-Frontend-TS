@@ -62,7 +62,7 @@ interface AllProductsApiResponse {
 // Interface representing the API response for fetching detailed information about a single product
 interface GetProductDetailsApiResponse {
   success: boolean;
-  data?: Product; // Optional detailed product object
+  product?: Product; // Optional detailed product object
   message: string; // Message related to the response
 }
 
@@ -97,7 +97,7 @@ interface GetNewProductsApiResponse {
 // Interface representing the API response for fetching filtered products based on criteria
 interface GetFilteredProductsApiResponse {
   success: boolean;
-  products?: Product[]; // Optional array of filtered products
+  data?: Product[]; // Optional array of filtered products
   message: string; // Message related to the response
 }
 

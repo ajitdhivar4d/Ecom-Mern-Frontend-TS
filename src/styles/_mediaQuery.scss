@@ -771,8 +771,9 @@
 // ProductCard
 @media screen and (max-width: 700px) {
   .productCard-container {
-    width: 20rem;
+    width: 100%;
     margin: auto;
+    height: 350px;
 
     > section {
       .link-brand-img {
@@ -815,6 +816,8 @@
 @media screen and (min-width: 700px) and (max-width: 1200px) {
   .productCard-container {
     width: 16rem;
+    margin: auto;
+    height: 450px;
 
     > section {
       .link-brand-img {
@@ -826,6 +829,9 @@
 
     .productCard-info {
       padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
 
       > div {
         > h5 {
@@ -856,6 +862,8 @@
 @media screen and (min-width: 1200px) {
   .productCard-container {
     width: 18rem;
+    margin-top: auto;
+    height: 450px;
 
     > section {
       .link-brand-img {
@@ -867,6 +875,9 @@
 
     .productCard-info {
       padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
 
       > div {
         > h5 {

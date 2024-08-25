@@ -23,8 +23,13 @@ interface Product {
   reviews: Review[];
 }
 
+interface Category {
+  _id: string;
+  name: string;
+}
+
 interface ShopState {
-  categories: string[];
+  categories: Category[];
   products: Product[];
   checked: string[];
   radio: string[];
@@ -45,7 +50,7 @@ export const shopSlice = createSlice({
   name: "shop",
   initialState,
   reducers: {
-    setCategories: (state, action: PayloadAction<string[]>) => {
+    setCategories: (state, action: PayloadAction<Category[]>) => {
       state.categories = action.payload;
     },
     setProducts: (state, action: PayloadAction<Product[]>) => {

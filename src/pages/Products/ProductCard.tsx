@@ -12,16 +12,7 @@ interface Product {
   name: string;
 }
 
-const p: Product = {
-  _id: "62f4a4c7e1f8b4531a4f8c6d",
-  brand: "Apple",
-  name: "Apple iPhone 15 (128 GB) - Blue",
-  image: "https://m.media-amazon.com/images/I/71d7rfSl0wL._SX679_.jpg",
-  price: 120000,
-  description: "DYNAMIC ISLAND COMES TO IPHONE 15 — Dynamic Island bubbles...",
-};
-
-const ProductCard = () => {
+const ProductCard = ({ p }: { p: Product }) => {
   const addToCartHandler = () => {
     console.log("addToCartHandler");
   };
@@ -31,18 +22,14 @@ const ProductCard = () => {
       <section>
         <Link to={`/product/${p._id}`} className="link-brand-img">
           <span>{p?.brand}</span>
-          <img
-            src={p.image}
-            alt={p.name}
-            style={{ height: "170px", objectFit: "cover" }}
-          />
+          <img src={p.image} alt={p.name} />
         </Link>
         <HeartIcon />
       </section>
 
       <div className="productCard-info">
         <div>
-          <h5>{p?.name}</h5>
+          <h5>{p?.name.slice(0, 25)}</h5>
 
           <p>
             {p?.price?.toLocaleString("en-IN", {
@@ -52,7 +39,7 @@ const ProductCard = () => {
           </p>
         </div>
 
-        <p>{p?.description?.substring(0, 60)} ...</p>
+        <p>{p?.description?.substring(0, 40)} ...</p>
 
         <section>
           <Link to={`/product/${p._id}`} className="link-readMore">

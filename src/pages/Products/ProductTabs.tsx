@@ -5,13 +5,22 @@ import SmallProduct from "./SmallProduct";
 
 const userInfo = true;
 
-const product = {
-  reviews: {
-    length: 2,
-  },
-};
+const ProductTabs = ({
+  data,
+  isLoading,
+  productData,
+}: {
+  data: any;
+  isLoading: boolean;
+  productData: any;
+}) => {
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-const ProductTabs = () => {
+  const products = data?.products;
+  const product = productData.product;
+
   const [activeTab, setActiveTab] = useState(1);
 
   const handleTabClick = (tabNumber: number) => {
@@ -121,10 +130,13 @@ const ProductTabs = () => {
       <section>
         {activeTab === 3 && (
           <section className="related-products-section ">
-            <SmallProduct />
-            <SmallProduct />
-            <SmallProduct />
-            <SmallProduct />
+            {products?.length === 0 ? (
+              <p>No related products found</p>
+            ) : (
+              products?.map((p: any) => (
+                <SmallProduct key={p._id} product={p} />
+              ))
+            )}
           </section>
         )}
       </section>

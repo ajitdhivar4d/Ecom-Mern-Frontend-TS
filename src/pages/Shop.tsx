@@ -1,29 +1,133 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../hook/hooks";
+import { useFetchCategoriesQuery } from "../redux/api/categorySlice";
+import { useGetFilteredProductsQuery } from "../redux/api/productSlice";
+import {
+  setCategories,
+  setChecked,
+  setProducts,
+} from "../redux/features/shop/shopSlice";
 import ProductCard from "./Products/ProductCard";
 
-const categories = [
-  { _id: "1", name: "cameras" },
-  { _id: "2", name: "sofa" },
-  { _id: "3", name: "Gym" },
-  { _id: "4", name: "Shoes" },
-  { _id: "5", name: "Mackbooks" },
-  { _id: "6", name: "PC" },
-];
+interface Category {
+  _id: string;
+  name: string;
+}
 
-const uniqueBrands = [
-  "Fujifilm",
-  "Amazon Brand",
-  "Bodyband",
-  "Bacca Bucci",
-  "Apple",
-];
+// Interface representing a product review
+interface Review {
+  _id: string;
+  name: string;
+  rating: number;
+  comment: string;
+  user: string;
+}
 
-const Shop = () => {
-  const [priceFilter, setPriceFilter] = useState("");
+// Interface representing a product
+interface Product {
+  _id: string;
+  name: string;
+  image: string;
+  brand: string;
+  quantity: number;
+  category: string;
+  description: string;
+  rating: number;
+  numReviews: number;
+  price: number;
+  countInStock: number;
+  reviews: Review[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+const Shop: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const { categories, checked, radio, products } = useAppSelector(
+    (state) => state.shop,
+  );
+
+  const [priceFilter, setPriceFilter] = useState<string>("");
+
+  const { data: categoriesQueryData, isLoading: categoriesQueryIsLoading } =
+    useFetchCategoriesQuery();
+
+  const {
+    data: filteredProductsQueryData,
+    isLoading: filteredProductsQueryIsLoading,
+    error: filteredProductsQueryError,
+  } = useGetFilteredProductsQuery({
+    checked,
+    radio,
+  });
+
+  console.log(filteredProductsQueryData?.data);
+
+  useEffect(() => {
+    if (categoriesQueryData && !categoriesQueryIsLoading) {
+      dispatch(setCategories(categoriesQueryData.categories as Category[]));
+    }
+  }, [categoriesQueryData, dispatch, categoriesQueryIsLoading]);
+
+  useEffect(() => {
+    if (!filteredProductsQueryIsLoading && !filteredProductsQueryError) {
+      const filteredProducts = filteredProductsQueryData?.data?.filter(
+        (product: Product) => {
+          return (
+            product.price.toString().includes(priceFilter) ||
+            product.price === parseInt(priceFilter, 10)
+          );
+        },
+      );
+
+      dispatch(setProducts(filteredProducts as Product[]));
+    }
+  }, [
+    checked,
+    radio,
+    filteredProductsQueryData,
+    dispatch,
+    priceFilter,
+    filteredProductsQueryIsLoading,
+    filteredProductsQueryError,
+  ]);
 
   const handlePriceChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // Update the price filter state when the user types in the input filed
     setPriceFilter(e.target.value);
+  };
+
+  const handleCheck = (value: boolean, id: string) => {
+    const updatedChecked = value
+      ? [...checked, id]
+      : checked.filter((c: string) => c !== id);
+
+    dispatch(setChecked(updatedChecked));
+  };
+
+  const handleBrandClick = (brand: string) => {
+    const productsByBrand = filteredProductsQueryData?.data?.filter(
+      (product: Product) => product.brand === brand,
+    );
+
+    console.log("brand" + brand);
+
+    dispatch(setProducts(productsByBrand as Product[]));
+  };
+
+  // Add "All Brands" option to uniqueBrands
+  const uniqueBrands = [
+    ...Array.from(
+      new Set(
+        filteredProductsQueryData?.data
+          ?.map((product) => product.brand)
+          .filter((brand) => brand !== undefined),
+      ),
+    ),
+  ];
+
+  const resetFilters = () => {
+    dispatch(setChecked([]));
+    setPriceFilter("");
   };
 
   return (
@@ -39,7 +143,11 @@ const Shop = () => {
                 {categories?.map((c) => (
                   <div key={c._id} className="div-key">
                     <div>
-                      <input type="checkbox" id="red-checkbox" />
+                      <input
+                        type="checkbox"
+                        id="red-checkbox"
+                        onChange={(e) => handleCheck(e.target.checked, c._id)}
+                      />
 
                       <label htmlFor="pink-checkbox">{c.name}</label>
                     </div>
@@ -52,13 +160,16 @@ const Shop = () => {
               <h2 className="h2-brand">Filter by Brands</h2>
               <div className="div-brand">
                 {uniqueBrands?.map((brand) => (
-                  <React.Fragment key={brand}>
-                    <div>
-                      <input type="radio" id={brand} name="brand" />
+                  <div key={brand}>
+                    <input
+                      type="radio"
+                      id={brand}
+                      name="brand"
+                      onChange={() => handleBrandClick(brand)}
+                    />
 
-                      <label htmlFor="pink-radio">{brand}</label>
-                    </div>
-                  </React.Fragment>
+                    <label htmlFor="pink-radio">{brand}</label>
+                  </div>
                 ))}
               </div>
             </div>
@@ -79,18 +190,23 @@ const Shop = () => {
             </div>
             {/* / */}
             <div className="div-reset">
-              <button onClick={() => window.location.reload()}>Reset</button>
+              <button onClick={resetFilters}>Reset</button>{" "}
             </div>
           </div>
         </div>
 
         <div className="shop-product-container">
-          <h2 className="h4 text-center mb-2">10 Products</h2>
-          <div className="flex flex-wrap">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+          <h2>{products?.length} Products</h2>
+          <div>
+            {products.length === 0 ? (
+              <div>Loading..</div>
+            ) : (
+              products?.map((p) => (
+                <div className="p-3" key={p._id}>
+                  <ProductCard p={p} />
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>
