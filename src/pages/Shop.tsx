@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hook/hooks";
 import { useFetchCategoriesQuery } from "../redux/api/categorySlice";
-import { useGetFilteredProductsQuery } from "../redux/api/productSlice";
+import { useAllProductsQuery } from "../redux/api/productSlice";
 import {
   setCategories,
   setChecked,
@@ -56,12 +56,9 @@ const Shop: React.FC = () => {
     data: filteredProductsQueryData,
     isLoading: filteredProductsQueryIsLoading,
     error: filteredProductsQueryError,
-  } = useGetFilteredProductsQuery({
-    checked,
-    radio,
-  });
+  } = useAllProductsQuery();
 
-  console.log(filteredProductsQueryData?.data);
+  console.log(filteredProductsQueryData);
 
   useEffect(() => {
     if (categoriesQueryData && !categoriesQueryIsLoading) {
@@ -71,7 +68,7 @@ const Shop: React.FC = () => {
 
   useEffect(() => {
     if (!filteredProductsQueryIsLoading && !filteredProductsQueryError) {
-      const filteredProducts = filteredProductsQueryData?.data?.filter(
+      const filteredProducts = filteredProductsQueryData?.products?.filter(
         (product: Product) => {
           return (
             product.price.toString().includes(priceFilter) ||
@@ -96,20 +93,19 @@ const Shop: React.FC = () => {
     setPriceFilter(e.target.value);
   };
 
-  const handleCheck = (value: boolean, id: string) => {
-    const updatedChecked = value
-      ? [...checked, id]
-      : checked.filter((c: string) => c !== id);
+  const handleCheck = (name: string) => {
+    console.log(name);
+    const productsByCatName = filteredProductsQueryData?.products?.filter(
+      (product: Product) => product.category === name,
+    );
 
-    dispatch(setChecked(updatedChecked));
+    dispatch(setProducts(productsByCatName as Product[]));
   };
 
   const handleBrandClick = (brand: string) => {
-    const productsByBrand = filteredProductsQueryData?.data?.filter(
+    const productsByBrand = filteredProductsQueryData?.products?.filter(
       (product: Product) => product.brand === brand,
     );
-
-    console.log("brand" + brand);
 
     dispatch(setProducts(productsByBrand as Product[]));
   };
@@ -118,7 +114,7 @@ const Shop: React.FC = () => {
   const uniqueBrands = [
     ...Array.from(
       new Set(
-        filteredProductsQueryData?.data
+        filteredProductsQueryData?.products
           ?.map((product) => product.brand)
           .filter((brand) => brand !== undefined),
       ),
@@ -145,11 +141,10 @@ const Shop: React.FC = () => {
                     <div>
                       <input
                         type="checkbox"
-                        id="red-checkbox"
-                        onChange={(e) => handleCheck(e.target.checked, c._id)}
+                        id={`category-${c._id}`}
+                        onChange={() => handleCheck(c.name)}
                       />
-
-                      <label htmlFor="pink-checkbox">{c.name}</label>
+                      <label htmlFor={`category-${c._id}`}>{c.name}</label>
                     </div>
                   </div>
                 ))}
@@ -163,12 +158,11 @@ const Shop: React.FC = () => {
                   <div key={brand}>
                     <input
                       type="radio"
-                      id={brand}
+                      id={`brand-${brand}`}
                       name="brand"
                       onChange={() => handleBrandClick(brand)}
                     />
-
-                    <label htmlFor="pink-radio">{brand}</label>
+                    <label htmlFor={`brand-${brand}`}>{brand}</label>
                   </div>
                 ))}
               </div>
