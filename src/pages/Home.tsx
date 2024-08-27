@@ -5,19 +5,11 @@ import Product from "./Products/Product";
 
 interface ProductArg {
   _id: string;
-  name: string;
-  image: string | undefined;
-  price: number;
-  rating: number;
-  numReviews: number;
-  countInStock: number;
   brand: string;
-  category: string;
-  reviews: any[];
+  image: string;
+  price: number;
   description: string;
-  quantity: number;
-  createdAt: string;
-  updatedAt: string;
+  name: string;
 }
 
 const Home = () => {
