@@ -3,26 +3,18 @@ import HeartIcon from "./HeartIcon";
 
 interface Product {
   _id: string;
-  name: string;
-  image: string | undefined;
-  price: number;
-  rating: number;
-  numReviews: number;
-  countInStock: number;
   brand: string;
-  category: string;
-  reviews: any[];
+  image: string;
+  price: number;
   description: string;
-  quantity: number;
-  createdAt: string;
-  updatedAt: string;
+  name: string;
 }
 
 interface ProductProps {
   product: Product;
 }
 
-const Product: React.FC<ProductProps> = ({ product }) => {
+const Product: React.FC<ProductProps> = ({ product }: { product: Product }) => {
   return (
     <div className="product">
       <div className="one">
@@ -31,7 +23,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
           alt={product.name}
           className="w-[30rem] rounded"
         />
-        <HeartIcon />
+        <HeartIcon product={product} />
       </div>
       <div className="two">
         <Link to={`/product/${product._id}`} className="two-link">

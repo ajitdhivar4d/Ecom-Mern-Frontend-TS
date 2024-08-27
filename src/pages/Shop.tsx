@@ -197,7 +197,7 @@ const Shop: React.FC = () => {
             ) : (
               products?.map((p) => (
                 <div className="p-3" key={p._id}>
-                  <ProductCard p={p} />
+                  <ProductCard product={p} />
                 </div>
               ))
             )}

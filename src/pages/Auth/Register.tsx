@@ -1,17 +1,51 @@
-import { FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import { FormEvent, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../hook/hooks";
+import { useRegisterMutation } from "../../redux/api/userSlice";
+import { toast } from "react-toastify";
+import { setCredentials } from "../../redux/features/auth/authSlice";
 
 const Register = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const [register, { isLoading }] = useRegisterMutation();
+  const { userInfo } = useAppSelector((state) => state.auth);
+
+  const { search } = useLocation();
+  const sp = new URLSearchParams(search);
+  const redirect = sp.get("redirect") || "/";
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect);
+    }
+  }, [navigate, redirect, userInfo]);
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("submitHandler");
-    console.log("Email", email);
-    console.log("Password", password);
+
+    if (password !== confirmPassword) {
+      toast.error("Password do not match");
+    } else {
+      try {
+        const res = await register({ username, email, password }).unwrap();
+        dispatch(setCredentials({ ...res }));
+        navigate(redirect);
+        toast.success("User successfully registered");
+      } catch (error) {
+        if (error && typeof error === "object" && "data" in error) {
+          toast.error((error as any).data.message);
+        } else {
+          toast.error("An unexpected error occurred");
+        }
+      }
+    }
   };
 
   return (
@@ -60,7 +94,10 @@ const Register = () => {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </div>
-            <button type="submit">Register</button>
+            <button disabled={isLoading} type="submit">
+              {isLoading ? "Registering..." : "Register"}
+            </button>
+            {isLoading && <div>Loading...</div>}
           </form>
 
           <div>

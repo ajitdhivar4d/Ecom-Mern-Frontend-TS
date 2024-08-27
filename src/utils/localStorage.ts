@@ -1,24 +1,10 @@
-interface Review {
-  _id: string;
-  name: string;
-  rating: number;
-  comment: string;
-  user: string;
-}
-
 interface Product {
   _id: string;
-  name: string;
-  image: string;
   brand: string;
-  quantity: number;
-  category: string;
-  description: string;
-  rating: number;
-  numReviews: number;
+  image: string;
   price: number;
-  countInStock: number;
-  reviews: Review[];
+  description: string;
+  name: string;
 }
 
 // Utility function to save favorites to localStorage

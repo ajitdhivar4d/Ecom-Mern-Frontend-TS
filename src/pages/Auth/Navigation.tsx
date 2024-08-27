@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   AiOutlineHome,
   AiOutlineShopping,
@@ -9,20 +9,38 @@ import {
 import { FaHeart } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { IoIosArrowDropup, IoIosArrowDropdown } from "react-icons/io";
-
-const userInfo = false;
-const userInfoIsAdmin = false;
+import FavoritesCount from "../Products/FavoritesCount";
+import { useAppDispatch, useAppSelector } from "../../hook/hooks";
+import { useLogoutMutation } from "../../redux/api/userSlice";
+import { logout } from "../../redux/features/auth/authSlice";
 
 const Navigation = () => {
+  const { userInfo } = useAppSelector((state) => state.auth);
+  const { cartItems } = useAppSelector((state) => state.cart);
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const [logoutApiCall] = useLogoutMutation();
+
+  const windowsWidth = useWindowsWidth(); // Move hook to the top
+
+  const logoutHandler = async () => {
+    try {
+      await logoutApiCall().unwrap();
+      dispatch(logout());
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
-  const logoutHandler = () => {
-    console.log("logoutHandler");
-  };
   return (
     <div className="navigation">
       <div className="navigation-main">
@@ -41,7 +59,7 @@ const Navigation = () => {
           </div>
           <div className="cart-count">
             <span>
-              <span>44</span>
+              <span>{cartItems.reduce((a, c) => a + c.qty, 0)}</span>
             </span>
           </div>
         </Link>
@@ -49,25 +67,21 @@ const Navigation = () => {
           <div className="favorites-icon">
             <FaHeart className="Icon" size={26} />
             <span className="fav-span">Favorites</span>
-            <div className="fav-count">
-              <span>34</span>
-            </div>
+            <FavoritesCount />
           </div>
         </Link>
       </div>
       <div className="navigation-auth">
         {userInfo && (
           <button onClick={toggleDropdown} className="toggle-dropdown-btn">
-            {/* // */}
-            {userInfo ? <span>UserName </span> : <></>}
-            {/* // */}
+            <span>UserName </span>
             {userInfo && dropdownOpen ? (
-              useWindowsWidth() > 700 ? (
+              windowsWidth > 700 ? (
                 <IoIosArrowDropdown size={26} />
               ) : (
                 <IoIosArrowDropup size={26} />
               )
-            ) : useWindowsWidth() > 700 ? (
+            ) : windowsWidth > 700 ? (
               <IoIosArrowDropup size={26} />
             ) : (
               <IoIosArrowDropdown size={26} />
@@ -76,7 +90,7 @@ const Navigation = () => {
         )}
         {dropdownOpen && userInfo && (
           <ul className="userInfo-ul">
-            {userInfoIsAdmin && (
+            {userInfo.user?.isAdmin && (
               <>
                 <li>
                   <Link to="/admin/dashboard" className="admin-link">
@@ -118,7 +132,6 @@ const Navigation = () => {
           </ul>
         )}
 
-        {/* // */}
         {!userInfo && (
           <ul className="log-reg-ul">
             <li>

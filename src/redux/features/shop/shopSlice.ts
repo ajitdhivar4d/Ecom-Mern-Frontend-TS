@@ -21,6 +21,8 @@ interface Product {
   price: number;
   countInStock: number;
   reviews: Review[];
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface Category {

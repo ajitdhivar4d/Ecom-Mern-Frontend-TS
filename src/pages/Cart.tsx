@@ -1,60 +1,46 @@
 import { FaTrash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../hook/hooks";
+import { addToCart, removeFromCart } from "../redux/features/cart/cartSlice";
 
-interface CartItems {
-  _id: string; // Unique identifier for the item
-  image: string; // URL or path to the item's image
-  name: string; // Name of the item
-  brand: string; // Brand of the item
-  price: number; // Price of the item
-  countInStock: number; // Number of items in stock
-  qty: number; // Quantity of the item in the cart
+interface CartItem {
+  _id: string;
+  name: string;
+  image: string;
+  brand: string;
+  quantity: number;
+  category: string;
+  description: string;
+  price: number;
+  countInStock: number;
+  qty: number;
 }
 
-const cartItems: CartItems[] = [
-  {
-    _id: "1",
-    image:
-      "https://m.media-amazon.com/images/I/31wacBawB3L._SY445_SX342_QL70_FMwebp_.jpg",
-    name: "IPhone 14 (128 GB) - Midnight",
-    brand: "Apple",
-    price: 78000,
-    countInStock: 20,
-    qty: 2,
-  },
-  {
-    _id: "2",
-    image:
-      "https://m.media-amazon.com/images/I/3144jXPtX4L._SY445_SX342_QL70_FMwebp_.jpg",
-    name: "iPhone 14 (128 GB) - Starlight",
-    brand: "Apple",
-    price: 76000,
-    countInStock: 15,
-    qty: 1,
-  },
-  {
-    _id: "3",
-    image:
-      "https://m.media-amazon.com/images/I/31jQ91XUDhS._SY445_SX342_QL70_FMwebp_.jpg",
-    name: "iPhone 12 (128GB) - Purple",
-    brand: "Apple",
-    price: 44500,
-    countInStock: 10,
-    qty: 3,
-  },
-];
+interface Product {
+  _id: string;
+  brand: string;
+  image: string;
+  price: number;
+  description: string;
+  name: string;
+}
 
 const Cart = () => {
-  const addToCartHandler = () => {
-    console.log("addToCartHandler");
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const { cartItems } = useAppSelector((state) => state.cart);
+
+  const addToCartHandler = (product: Product, qty: number) => {
+    dispatch(addToCart({ ...product, qty } as CartItem));
   };
 
-  const removeFromCartHandler = () => {
-    console.log("removeFromCartHandler");
+  const removeFromCartHandler = (id: string) => {
+    dispatch(removeFromCart(id));
   };
 
   const checkoutHandler = () => {
-    console.log("checkoutHandler");
+    navigate("/login?redirect=/shipping");
   };
 
   return (
@@ -92,7 +78,9 @@ const Cart = () => {
                       <div className="countInStock-section">
                         <select
                           value={item.qty}
-                          onChange={() => addToCartHandler()}
+                          onChange={(e) =>
+                            addToCartHandler(item, Number(e.target.value))
+                          }
                         >
                           {[...Array(item.countInStock).keys()].map((x) => (
                             <option key={x + 1} value={x + 1}>
@@ -104,7 +92,7 @@ const Cart = () => {
                       <div className="removeFromCartHandler">
                         <button
                           className="text-red-500 mr-[5rem]"
-                          onClick={() => removeFromCartHandler()}
+                          onClick={() => removeFromCartHandler(item._id)}
                         >
                           <FaTrash className="icon" />
                         </button>

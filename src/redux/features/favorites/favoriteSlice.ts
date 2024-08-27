@@ -1,26 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface Review {
-  _id: string;
-  name: string;
-  rating: number;
-  comment: string;
-  user: string;
-}
-
 interface Product {
   _id: string;
-  name: string;
-  image: string;
   brand: string;
-  quantity: number;
-  category: string;
-  description: string;
-  rating: number;
-  numReviews: number;
+  image: string;
   price: number;
-  countInStock: number;
-  reviews: Review[];
+  description: string;
+  name: string;
 }
 
 interface favoriteState {
@@ -58,7 +44,8 @@ export const favoriteSlice = createSlice({
   },
 });
 
-export const { addFavorite } = favoriteSlice.actions;
+export const { addFavorite, removeFavorite, setFavorites } =
+  favoriteSlice.actions;
 
 export const selectFavorites = (state: favoriteState) => state.favorites;
 

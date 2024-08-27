@@ -6,16 +6,33 @@ import {
   FaStar,
   FaStore,
 } from "react-icons/fa";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   useGetProductDetailsQuery,
   useGetTopProductsQuery,
 } from "../../redux/api/productSlice";
 import HeartIcon from "./HeartIcon";
 import ProductTabs from "./ProductTabs";
+import { useAppDispatch } from "../../hook/hooks";
+import { addToCart } from "../../redux/features/cart/cartSlice";
+
+interface CartItem {
+  _id: string;
+  name: string;
+  image: string;
+  brand: string;
+  quantity: number;
+  category: string;
+  description: string;
+  price: number;
+  countInStock: number;
+  qty: number;
+}
 
 const ProductDetails = () => {
   const { id: productId } = useParams();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const { data: productData } = useGetProductDetailsQuery(productId as string);
 
@@ -31,7 +48,8 @@ const ProductDetails = () => {
   // const [comment, setComment] = useState("");
 
   const addToCartHandler = () => {
-    console.log("addToCartHandler");
+    dispatch(addToCart({ ...product, qty } as CartItem));
+    navigate("/cart");
   };
   return (
     <div className="product-details-container">
@@ -45,7 +63,7 @@ const ProductDetails = () => {
           <div className="img-div">
             <img src={product.image} alt={product.name} />
 
-            <HeartIcon />
+            <HeartIcon product={product} />
           </div>
           <div className="info">
             <h2>{product.name}</h2>

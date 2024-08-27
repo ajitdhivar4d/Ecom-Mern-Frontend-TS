@@ -4,19 +4,11 @@ import React from "react";
 
 interface Product {
   _id: string;
-  name: string;
-  image: string | undefined;
-  price: number;
-  rating: number;
-  numReviews: number;
-  countInStock: number;
   brand: string;
-  category: string;
-  reviews: any[];
+  image: string;
+  price: number;
   description: string;
-  quantity: number;
-  createdAt: string;
-  updatedAt: string;
+  name: string;
 }
 
 interface ProductProps {
@@ -28,7 +20,7 @@ const SmallProduct: React.FC<ProductProps> = ({ product }) => {
     <div className="small-product-container">
       <section>
         <img src={product.image || ""} alt={product.name} />
-        <HeartIcon />
+        <HeartIcon product={product} />
         <div>
           <Link to={`/product/${product._id}`}>
             <h2>
