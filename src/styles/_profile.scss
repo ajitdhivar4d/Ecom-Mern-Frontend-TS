@@ -1,0 +1,60 @@
+.profile-container {
+  padding: 1rem;
+  width: 20rem;
+
+  .flexContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .formWrapper {
+      width: 100%;
+
+      > h2 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      > form {
+        //
+        .form-label-input {
+          margin-bottom: 1rem;
+
+          > label {
+            display: block;
+            margin-bottom: 8px;
+          }
+          > input {
+            padding: 1rem;
+            border-radius: 10px;
+            width: 100%;
+          }
+        }
+
+        .flexButtonContainer {
+          > button {
+            background-color: rgb(183, 71, 177);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 10px;
+            margin-right: 10px;
+            &:hover {
+              background-color: rgb(180, 12, 172);
+            }
+          }
+          .linkButton {
+            background-color: rgb(183, 71, 177);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 10px;
+            &:hover {
+              background-color: rgb(180, 12, 172);
+            }
+          }
+        }
+      }
+    }
+  }
+}

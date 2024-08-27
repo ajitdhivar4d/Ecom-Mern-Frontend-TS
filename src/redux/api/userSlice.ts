@@ -72,7 +72,7 @@ interface ProfileRequest {
 
 // Request payload for updating a user
 interface UpdateUserRequest {
-  userId: string;
+  useId: string;
   username: string;
   email: string;
   isAdmin: boolean;
@@ -147,7 +147,7 @@ export const userSlice = api.injectEndpoints({
     // Mutation to update a user's information
     updateUser: builder.mutation<RegisterApiResponse, UpdateUserRequest>({
       query: (data) => ({
-        url: `${USERS_URL}/${data.userId}`,
+        url: `${USERS_URL}/profile`,
         method: "PUT",
         body: data,
       }),

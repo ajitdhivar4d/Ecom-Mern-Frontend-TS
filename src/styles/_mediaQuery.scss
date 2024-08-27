@@ -1170,3 +1170,25 @@
     }
   }
 }
+
+// Profile
+@media screen and (max-width: 700px) {
+  .profile-container {
+    margin: 0 auto;
+    margin-top: 4rem;
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1200px) {
+  .profile-container {
+    margin: 0 auto;
+    margin-top: 10rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .profile-container {
+    margin: 0 auto;
+    margin-top: 10rem;
+  }
+}
