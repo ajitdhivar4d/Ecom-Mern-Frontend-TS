@@ -110,7 +110,6 @@ export const userSlice = api.injectEndpoints({
         body: data,
         credentials: "include",
       }),
-      invalidatesTags: ["User"],
     }),
 
     // Query to fetch all users
