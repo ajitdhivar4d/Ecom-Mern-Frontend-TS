@@ -9,70 +9,62 @@ interface User {
   isAdmin: boolean;
 }
 
-// API response when registering or updating user data
+// API response interfaces
 interface RegisterApiResponse {
   success: boolean;
   user: User | null;
   message: string;
 }
 
-// API response when logging in
 interface LoginApiResponse {
   success: boolean;
   user: User | null;
   message: string;
 }
 
-// API response when logging out
 interface LogoutApiResponse {
   success: boolean;
   message: string;
 }
 
-// API response when updating user profile
 interface ProfileApiResponse {
   success: boolean;
   user: User | null;
   message: string;
 }
 
-// API response when fetching multiple users
 interface UsersApiResponse {
   success: boolean;
   users: User[];
   message: string;
 }
 
-// API response when fetching a single user's details
 interface UserDetailApiResponse {
   success: boolean;
   user: User | null;
   message: string;
 }
 
-// Request payload for registering a new user
+// Request payload interfaces
 interface RegisterRequest {
   username: string;
   email: string;
   password: string;
 }
 
-// Request payload for logging in
 interface LoginRequest {
   email: string;
   password: string;
 }
 
-// Request payload for updating user profile
 interface ProfileRequest {
   username: string;
   email: string;
-  password?: string; // Password is optional when updating the profile
+  password?: string;
 }
 
-// Request payload for updating a user
 interface UpdateUserRequest {
-  useId: string;
+  userId: string;
   username: string;
   email: string;
   isAdmin: boolean;
@@ -81,13 +73,13 @@ interface UpdateUserRequest {
 // Define the endpoints for user-related operations
 export const userSlice = api.injectEndpoints({
   endpoints: (builder) => ({
-    //
     // Mutation to register a new user
     register: builder.mutation<RegisterApiResponse, RegisterRequest>({
       query: (data) => ({
         url: USERS_URL,
         method: "POST",
         body: data,
+        credentials: "include", // Ensure cookies are included
       }),
     }),
 
@@ -97,6 +89,7 @@ export const userSlice = api.injectEndpoints({
         url: `${USERS_URL}/auth`,
         method: "POST",
         body: data,
+        credentials: "include",
       }),
     }),
 
@@ -105,6 +98,7 @@ export const userSlice = api.injectEndpoints({
       query: () => ({
         url: `${USERS_URL}/logout`,
         method: "POST",
+        credentials: "include",
       }),
     }),
 
@@ -114,17 +108,19 @@ export const userSlice = api.injectEndpoints({
         url: `${USERS_URL}/profile`,
         method: "PUT",
         body: data,
+        credentials: "include",
       }),
-      invalidatesTags: ["User"], // Invalidate the "User" tag to refresh cached user data
+      invalidatesTags: ["User"],
     }),
 
     // Query to fetch all users
     getUsers: builder.query<UsersApiResponse, void>({
       query: () => ({
         url: USERS_URL,
+        credentials: "include",
       }),
-      providesTags: ["User"], // Provide the "User" tag for caching
-      keepUnusedDataFor: 5, // Keep the data cached for 5 seconds
+      providesTags: ["User"],
+      keepUnusedDataFor: 5,
     }),
 
     // Mutation to delete a user
@@ -132,29 +128,32 @@ export const userSlice = api.injectEndpoints({
       query: (userId) => ({
         url: `${USERS_URL}/${userId}`,
         method: "DELETE",
+        credentials: "include",
       }),
-      invalidatesTags: ["User"], // Invalidate the "User" tag to refresh cached user data
+      invalidatesTags: ["User"],
     }),
 
     // Query to fetch a user's details by ID
     getUserDetails: builder.query<UserDetailApiResponse, string>({
       query: (id) => ({
         url: `${USERS_URL}/${id}`,
+        credentials: "include",
       }),
-      keepUnusedDataFor: 5, // Keep the data cached for 5 seconds
+      keepUnusedDataFor: 5,
     }),
 
     // Mutation to update a user's information
     updateUser: builder.mutation<RegisterApiResponse, UpdateUserRequest>({
       query: (data) => ({
-        url: `${USERS_URL}/profile`,
+        url: `${USERS_URL}/${data.userId}`,
         method: "PUT",
         body: data,
+        credentials: "include",
       }),
-      invalidatesTags: ["User"], // Invalidate the "User" tag to refresh cached user data
+      invalidatesTags: ["User"],
     }),
   }),
-  overrideExisting: false, // Do not override existing endpoints
+  overrideExisting: false,
 });
 
 // Export hooks for the endpoints

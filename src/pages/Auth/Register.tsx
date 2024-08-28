@@ -5,6 +5,13 @@ import { useRegisterMutation } from "../../redux/api/userSlice";
 import { toast } from "react-toastify";
 import { setCredentials } from "../../redux/features/auth/authSlice";
 
+interface RegisterError {
+  data?: {
+    success: boolean;
+    message?: string;
+  };
+}
+
 const Register = () => {
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -38,12 +45,9 @@ const Register = () => {
         dispatch(setCredentials({ ...res }));
         navigate(redirect);
         toast.success("User successfully registered");
-      } catch (error) {
-        if (error && typeof error === "object" && "data" in error) {
-          toast.error((error as any).data.message);
-        } else {
-          toast.error("An unexpected error occurred");
-        }
+      } catch (err) {
+        const registerError = err as RegisterError;
+        toast.error(registerError?.data?.message);
       }
     }
   };
